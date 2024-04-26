@@ -53,9 +53,24 @@ namespace OpenXMLFunction
                 var content = data?.content.ToObject<Dictionary<string, string>>();
                 var headers = data?.headers.ToObject<Dictionary<string, string>>();
 
-                List<Dictionary<string, string>> abbreviationsList = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(data?.abbreviations.ToString());
-                var abbreviations = abbreviationsList.SelectMany(dict => dict)
-                                                     .ToDictionary(pair => pair.Key, pair => pair.Value);
+                //List<Dictionary<string, string>> abbreviationsList = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(data?.abbreviations.ToString());
+                //var abbreviations = abbreviationsList.SelectMany(dict => dict)
+                //                                     .ToDictionary(pair => pair.Key, pair => pair.Value);
+                //var abbreviations = data?.abbreviations.ToObject<Dictionary<string, string>>();
+                var abbreviations = new Dictionary<string, string>
+                {
+                    { "BP", "Blood Pressure" },
+                    { "HR", "Heart Rate" },
+                    { "RBC", "Red Blood Cells" },
+                    { "WBC", "White Blood Cells" },
+                    { "BMI", "Body Mass Index" },
+                    { "CPR", "Cardiopulmonary Resuscitation" },
+                    { "ECG", "Electrocardiogram" },
+                    { "MRI", "Magnetic Resonance Imaging" },
+                    { "CT", "Computed Tomography" },
+                    { "ER", "Emergency Room" },
+                    { "ICU", "Intensive Care Unit" }
+                };
 
                 if (content == null || headers == null || abbreviations == null)
                 {
